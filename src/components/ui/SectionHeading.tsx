@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react'
 import { classNames } from '../../utils/classNames'
 
 interface SectionHeadingProps {
   eyebrow: string
-  title: string
+  title: ReactNode
   description?: string
   tone?: 'light' | 'dark'
   align?: 'left' | 'center'
@@ -29,7 +30,7 @@ export function SectionHeading({
       </p>
       <h2
         className={classNames(
-          'mt-3 font-display text-3xl font-bold sm:text-4xl',
+          'mt-3 font-display text-3xl font-bold text-balance sm:text-4xl',
           isDark ? 'text-cream' : 'text-espresso',
         )}
       >
