@@ -12,6 +12,11 @@ export interface NavLink {
   href: string
 }
 
+export interface StoryValue {
+  title: string
+  description: string
+}
+
 export interface ContactFormValues {
   name: string
   email: string
