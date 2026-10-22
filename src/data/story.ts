@@ -1,3 +1,6 @@
+export const STORY_INTRO =
+  'Yâren, eski Türkçede dost, can yoldaşı demek. Kahveyi de öyle görüyoruz: bir fincanın etrafında toplanan insanları birbirine yaklaştıran, yavaş ve samimi bir ritüel. Cezvedeki geleneği, espresso makinesinin hızı ve modern demleme tekniklerinin inceliğiyle buluşturuyoruz.'
+
 export interface StoryValue {
   title: string
   description: string
