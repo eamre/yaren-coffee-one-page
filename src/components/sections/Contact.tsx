@@ -2,6 +2,7 @@ import { CONTACT_INFO } from '../../data/brand'
 import { SECTION_IDS } from '../../data/sections'
 import { Container } from '../ui/Container'
 import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 import { ContactForm } from './ContactForm'
 
@@ -13,7 +14,7 @@ const INFO_ITEMS = [
 
 export function Contact() {
   return (
-    <section id={SECTION_IDS.contact} className="bg-sand py-24">
+    <Section id={SECTION_IDS.contact} className="bg-sand">
       <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <SectionHeading
@@ -41,6 +42,6 @@ export function Contact() {
           </div>
         </Reveal>
       </Container>
-    </section>
+    </Section>
   )
 }

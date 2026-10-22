@@ -3,11 +3,12 @@ import { SECTION_IDS } from '../../data/sections'
 import { STORY_INTRO, STORY_VALUES } from '../../data/story'
 import { Container } from '../ui/Container'
 import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 
 export function Story() {
   return (
-    <section id={SECTION_IDS.story} className="bg-wood py-24 text-cream">
+    <Section id={SECTION_IDS.story} className="bg-wood text-cream">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <Reveal>
           <img
@@ -41,6 +42,6 @@ export function Story() {
           </ul>
         </Reveal>
       </Container>
-    </section>
+    </Section>
   )
 }

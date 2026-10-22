@@ -3,13 +3,14 @@ import { SECTION_IDS } from '../../data/sections'
 import { Container } from '../ui/Container'
 import { ProductCard } from '../ui/ProductCard'
 import { Reveal } from '../ui/Reveal'
+import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 
 const CARD_REVEAL_STEP_MS = 150
 
 export function Products() {
   return (
-    <section id={SECTION_IDS.products} className="py-24">
+    <Section id={SECTION_IDS.products}>
       <Container>
         <SectionHeading
           eyebrow="Kahvelerimiz"
@@ -30,6 +31,6 @@ export function Products() {
           ))}
         </ul>
       </Container>
-    </section>
+    </Section>
   )
 }
