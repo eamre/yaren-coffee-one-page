@@ -69,7 +69,7 @@
   }
 }
 
-/* Hero fotoğrafı: `object-cover` gibi davranan sabit oranlı (2:3) bir çerçeve.
+/* Hero fotoğrafı: `object-cover` gibi davranan sabit oranlı bir çerçeve.
    Çerçeve boyutunu bildiği için üstüne yüzdeyle konumlanan öğeler (duman)
    ekran nasıl kırpılırsa kırpılsın fotoğraftaki aynı noktada kalır. */
 @layer components {
@@ -78,18 +78,44 @@
   }
 
   .hero-photo-frame {
-    --frame-width: max(100cqw, calc(100cqh * 2 / 3));
+    /* hero.webp dikey bir fotoğraf (2:3): yükseklik = genişlik × 1,5 */
+    --photo-height-per-width: 1.5;
+    /* Dikey odak noktası, `object-position`'daki gibi: 0 = üst, 1 = alt */
+    --photo-focus-y: 0.7;
+    /* `object-cover`: fotoğraf hero'yu hem yatayda hem dikeyde kaplamalı */
+    --frame-width: max(100cqw, calc(100cqh / var(--photo-height-per-width)));
 
     position: absolute;
     width: var(--frame-width);
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 1 / var(--photo-height-per-width);
     left: calc((100cqw - var(--frame-width)) * 0.5);
-    top: calc((100cqh - var(--frame-width) * 1.5) * 0.7);
+    top: calc(
+      (100cqh - var(--frame-width) * var(--photo-height-per-width)) *
+        var(--photo-focus-y)
+    );
   }
 
   .hero-steam {
     width: calc(var(--frame-width) * 0.1);
     height: calc(var(--frame-width) * 0.12);
+  }
+
+  /* Yazının arkasında okunurluk için yumuşak, koyu bir leke. */
+  .hero-text-scrim {
+    background: radial-gradient(
+      ellipse 75% 38% at 50% 44%,
+      color-mix(in srgb, var(--color-espresso) 55%, transparent),
+      transparent
+    );
+  }
+
+  /* Kenarlardaki dekoratif öğeleri (saksı, bitki) bastıran hafif vinyet. */
+  .hero-vignette {
+    background: radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      color-mix(in srgb, var(--color-espresso) 85%, transparent) 85%
+    );
   }
 }
 

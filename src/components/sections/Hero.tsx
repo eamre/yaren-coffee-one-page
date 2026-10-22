@@ -6,6 +6,13 @@ import { ButtonLink } from '../ui/Button'
 import { Container } from '../ui/Container'
 import { Steam } from '../ui/Steam'
 
+// Fotoğrafın yaklaştırma oranı: yanlardaki dekoratif bitkileri dışarıda bırakır.
+const PHOTO_ZOOM = 1.35
+
+// Öndeki fincanın yüzey merkezi, fotoğrafın yüzdesi olarak. Duman buradan çıkar.
+// Fotoğraf değişirse yalnızca bu değer güncellenir.
+const CUP_SURFACE = { left: '56%', top: '70%' }
+
 // Fotoğrafla aynı yaklaştırma ve kırpmayı paylaşan katman: içindeki öğeler
 // fotoğraftaki aynı noktaya yüzdeyle bağlanır.
 function PhotoFrame({ children }: { children: ReactNode }) {
@@ -14,7 +21,7 @@ function PhotoFrame({ children }: { children: ReactNode }) {
       className="hero-photo pointer-events-none absolute inset-0"
       aria-hidden="true"
     >
-      <div className="absolute inset-0 scale-[1.35]">
+      <div className="absolute inset-0" style={{ scale: PHOTO_ZOOM }}>
         <div className="hero-photo-frame">{children}</div>
       </div>
     </div>
@@ -32,10 +39,15 @@ export function Hero() {
           className="h-full w-full object-cover"
         />
       </PhotoFrame>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_38%_at_50%_44%,color-mix(in_srgb,var(--color-espresso)_55%,transparent),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,color-mix(in_srgb,var(--color-espresso)_85%,transparent)_85%)]" />
+      <div className="hero-text-scrim absolute inset-0" />
+      <div className="hero-vignette absolute inset-0" />
       <PhotoFrame>
-        <Steam className="hero-steam absolute top-[70%] left-[56%] -translate-x-1/2 -translate-y-full" />
+        <div
+          className="absolute -translate-x-1/2 -translate-y-full"
+          style={CUP_SURFACE}
+        >
+          <Steam className="hero-steam" />
+        </div>
       </PhotoFrame>
 
       <Container className="relative pt-44 text-center [text-shadow:0_1px_14px_rgb(0_0_0/0.5)] md:pt-48">
