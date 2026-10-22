@@ -4,6 +4,7 @@ import { NAV_LINKS } from '../../data/sections'
 import { useScrolled } from '../../hooks/useScrolled'
 import { classNames } from '../../utils/classNames'
 import { Container } from '../ui/Container'
+import { MenuIcon } from './MenuIcon'
 import { MobileMenu } from './MobileMenu'
 
 const DESKTOP_LINK_CLASSES = 'text-cream/90 transition-colors hover:text-copper'
@@ -48,22 +49,7 @@ export function Navbar() {
           onClick={() => setIsMenuOpen((open) => !open)}
           className="p-2.5 text-cream md:hidden"
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            aria-hidden="true"
-          >
-            {isMenuOpen ? (
-              <path d="M6 6l12 12M18 6L6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
+          <MenuIcon isOpen={isMenuOpen} />
         </button>
       </Container>
 
