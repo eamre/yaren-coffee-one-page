@@ -1,17 +1,20 @@
 import { useState } from 'react'
 import { BRAND } from '../../data/brand'
-import { NAV_LINKS } from '../../data/sections'
+import { NAV_LINKS, NAV_SECTION_IDS } from '../../data/sections'
+import { useActiveSection } from '../../hooks/useActiveSection'
 import { useScrolled } from '../../hooks/useScrolled'
 import { classNames } from '../../utils/classNames'
 import { Container } from '../ui/Container'
 import { MenuIcon } from './MenuIcon'
 import { MobileMenu } from './MobileMenu'
 
-const DESKTOP_LINK_CLASSES = 'text-cream/90 transition-colors hover:text-copper'
+const DESKTOP_LINK_CLASSES = 'relative transition-colors hover:text-copper'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isScrolled = useScrolled()
+  const activeSectionId = useActiveSection(NAV_SECTION_IDS)
+  const activeHref = activeSectionId ? `#${activeSectionId}` : null
 
   const closeMenu = () => setIsMenuOpen(false)
 
@@ -34,11 +37,30 @@ export function Navbar() {
         </a>
 
         <nav aria-label="Ana menü" className="hidden gap-8 md:flex">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a key={href} href={href} className={DESKTOP_LINK_CLASSES}>
-              {label}
-            </a>
-          ))}
+          {NAV_LINKS.map(({ label, href }) => {
+            const isActive = href === activeHref
+
+            return (
+              <a
+                key={href}
+                href={href}
+                aria-current={isActive ? 'location' : undefined}
+                className={classNames(
+                  DESKTOP_LINK_CLASSES,
+                  isActive ? 'text-cream' : 'text-cream/80',
+                )}
+              >
+                {label}
+                <span
+                  aria-hidden="true"
+                  className={classNames(
+                    'absolute -bottom-2 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-copper transition duration-300',
+                    isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
+                  )}
+                />
+              </a>
+            )
+          })}
         </nav>
 
         <button
@@ -53,7 +75,11 @@ export function Navbar() {
         </button>
       </Container>
 
-      <MobileMenu isOpen={isMenuOpen} onNavigate={closeMenu} />
+      <MobileMenu
+        isOpen={isMenuOpen}
+        activeHref={activeHref}
+        onNavigate={closeMenu}
+      />
     </header>
   )
 }
