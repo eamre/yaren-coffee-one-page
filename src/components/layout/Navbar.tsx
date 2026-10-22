@@ -4,8 +4,9 @@ import { NAV_LINKS } from '../../data/sections'
 import { useScrolled } from '../../hooks/useScrolled'
 import { classNames } from '../../utils/classNames'
 import { Container } from '../ui/Container'
+import { MobileMenu } from './MobileMenu'
 
-const NAV_LINK_CLASSES = 'text-cream/90 transition-colors hover:text-copper'
+const DESKTOP_LINK_CLASSES = 'text-cream/90 transition-colors hover:text-copper'
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -17,7 +18,7 @@ export function Navbar() {
     <header
       className={classNames(
         'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
-        isScrolled || isMenuOpen
+        isScrolled
           ? 'bg-espresso/95 shadow-lg backdrop-blur'
           : 'bg-transparent',
       )}
@@ -33,7 +34,7 @@ export function Navbar() {
 
         <nav aria-label="Ana menü" className="hidden gap-8 md:flex">
           {NAV_LINKS.map(({ label, href }) => (
-            <a key={href} href={href} className={NAV_LINK_CLASSES}>
+            <a key={href} href={href} className={DESKTOP_LINK_CLASSES}>
               {label}
             </a>
           ))}
@@ -66,22 +67,7 @@ export function Navbar() {
         </button>
       </Container>
 
-      {isMenuOpen && (
-        <nav id="mobile-menu" aria-label="Mobil menü" className="md:hidden">
-          <Container className="flex flex-col gap-4 pb-6">
-            {NAV_LINKS.map(({ label, href }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={closeMenu}
-                className={classNames(NAV_LINK_CLASSES, 'py-2 text-lg')}
-              >
-                {label}
-              </a>
-            ))}
-          </Container>
-        </nav>
-      )}
+      <MobileMenu isOpen={isMenuOpen} onNavigate={closeMenu} />
     </header>
   )
 }
