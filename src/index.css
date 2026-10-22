@@ -12,6 +12,18 @@
   --font-body: "DM Sans", system-ui, sans-serif;
 
   --animate-steam: steam 4s ease-in-out infinite;
+  --animate-menu-in: menu-in 300ms ease-out;
+
+  @keyframes menu-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.75rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
 
   @keyframes steam {
     0% {
@@ -40,10 +52,14 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Bölüm kendi 6rem üst boşluğunu taşıdığı için menü yüksekliği (4rem)
-     tamamen eklenmez; içerik menü ile ekranın altı arasında ortalanır. */
+  /* Bölüm kendi üst boşluğunu (mobilde 4rem, masaüstünde 6rem) taşıdığı için
+     menü yüksekliği (4rem) tamamen eklenmez; başlık menünün altında rahat durur. */
   section[id] {
-    scroll-margin-top: 0.5rem;
+    scroll-margin-top: 2rem;
+
+    @media (min-width: 48rem) {
+      scroll-margin-top: 0.5rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -12,10 +12,10 @@ export function MobileMenu({ isOpen, onNavigate }: MobileMenuProps) {
       id="mobile-menu"
       aria-label="Mobil menü"
       className={classNames(
-        'absolute inset-x-0 top-full px-5 pt-2 transition-[opacity,transform,visibility] duration-300 ease-out motion-reduce:transition-none md:hidden',
+        'absolute inset-x-0 top-full px-5 pt-2 transition-[opacity,visibility] duration-200 md:hidden motion-reduce:transition-none',
         isOpen
-          ? 'translate-y-0 opacity-100'
-          : 'pointer-events-none invisible -translate-y-3 opacity-0',
+          ? 'animate-menu-in opacity-100 motion-reduce:animate-none'
+          : 'pointer-events-none invisible opacity-0',
       )}
     >
       <ul className="divide-y divide-espresso/10 rounded-2xl bg-cream/95 px-6 py-2 shadow-xl backdrop-blur-md">
