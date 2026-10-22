@@ -52,13 +52,13 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Bölüm kendi üst boşluğunu (mobilde 4rem, masaüstünde 6rem) taşıdığı için
-     menü yüksekliği (4rem) tamamen eklenmez; başlık menünün altında rahat durur. */
+  /* Mobilde bölüm kendi üst boşluğunu (4rem) taşır; menü yüksekliği (4rem)
+     tamamen eklenmez. Masaüstünde bölümler ekranı doldurur, tepeye hizalanır. */
   section[id] {
     scroll-margin-top: 2rem;
 
     @media (min-width: 48rem) {
-      scroll-margin-top: 0.5rem;
+      scroll-margin-top: 0;
     }
   }
 
