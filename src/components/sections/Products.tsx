@@ -14,7 +14,7 @@ export function Products() {
       <Container>
         <SectionHeading
           eyebrow="Kahvelerimiz"
-          title="Her yudumda bir gelenek"
+          title="Her Yudumda Bir Gelenek"
           description="Üç klasik, üç farklı ritim. Hangisi olursa olsun, taze çekilmiş çekirdeklerle hazırlanır."
         />
 

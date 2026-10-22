@@ -1,6 +1,6 @@
 export const BRAND = {
   name: 'Yâren',
-  slogan: 'Her fincanda ortak bir hikâye.',
+  slogan: 'Her Fincanda Ortak Bir Hikâye',
   tagline: 'Geleneksel Türk kahvesi, modern demleme kültürüyle buluşuyor.',
 } as const
 

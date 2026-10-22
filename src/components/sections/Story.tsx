@@ -15,14 +15,14 @@ export function Story() {
             src={storyImage}
             alt="Kavurma makinesinden dökülen sıcak kahve çekirdekleri"
             loading="lazy"
-            className="aspect-[4/3] w-full rounded-3xl object-cover shadow-2xl"
+            className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl"
           />
         </Reveal>
 
         <Reveal delayMs={150}>
           <SectionHeading
             eyebrow="Hikâyemiz"
-            title="Yâren: dost olmak, paylaşmak"
+            title="Yâren: Dost Olmak, Paylaşmak"
             description={STORY_INTRO}
             tone="dark"
             align="left"
