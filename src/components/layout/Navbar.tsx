@@ -26,7 +26,7 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between">
         <a
           href="#"
-          className="font-display text-3xl font-bold text-cream"
+          className="py-1 font-display text-3xl font-bold text-cream"
           onClick={closeMenu}
         >
           {BRAND.name}
@@ -46,7 +46,7 @@ export function Navbar() {
           aria-expanded={isMenuOpen}
           aria-controls="mobile-menu"
           onClick={() => setIsMenuOpen((open) => !open)}
-          className="p-2 text-cream md:hidden"
+          className="p-2.5 text-cream md:hidden"
         >
           <svg
             width="24"
