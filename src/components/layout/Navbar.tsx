@@ -25,7 +25,7 @@ export function Navbar() {
       <Container className="flex h-16 items-center justify-between">
         <a
           href="#"
-          className="font-display text-2xl font-bold text-cream"
+          className="font-display text-3xl font-bold text-cream"
           onClick={closeMenu}
         >
           {BRAND.name}
