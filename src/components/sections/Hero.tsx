@@ -15,7 +15,7 @@ export function Hero() {
         fetchPriority="high"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-espresso/80 via-espresso/60 to-espresso/90" />
+      <div className="absolute inset-0 bg-linear-to-b from-espresso/80 via-espresso/60 to-espresso/90" />
 
       <Container className="relative py-32 text-center">
         <Steam />

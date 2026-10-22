@@ -10,7 +10,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-sand shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="aspect-[4/3] overflow-hidden">
+      <div className="aspect-4/3 overflow-hidden">
         <img
           src={image}
           alt={imageAlt}

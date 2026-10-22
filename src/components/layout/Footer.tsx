@@ -16,7 +16,7 @@ export function Footer() {
             <a
               key={href}
               href={href}
-              className="text-cream/80 transition-colors hover:text-copper"
+              className="py-3 text-cream/80 transition-colors hover:text-copper"
             >
               {label}
             </a>
