@@ -3,15 +3,34 @@ import type { SubmitStatus } from '../../types'
 import { Button } from '../ui/Button'
 import { TextField } from '../ui/TextField'
 
-const STATUS_MESSAGES: Partial<Record<SubmitStatus, string>> = {
-  success: 'Teşekkürler! Mesajınız bize ulaştı, en kısa sürede dönüş yapacağız.',
-  error: 'Mesaj gönderilemedi. Lütfen biraz sonra tekrar deneyin.',
+interface StatusFeedback {
+  message: string
+  role: 'status' | 'alert'
+  className: string
+}
+
+const FEEDBACK_BASE_CLASSES = 'rounded-xl px-4 py-3'
+
+// Gönderim sonucuna göre gösterilen geri bildirim. Yeni bir durum eklemek
+// için buraya bir kayıt eklemek yeterli.
+const STATUS_FEEDBACK: Partial<Record<SubmitStatus, StatusFeedback>> = {
+  success: {
+    message:
+      'Teşekkürler! Mesajınız bize ulaştı, en kısa sürede dönüş yapacağız.',
+    role: 'status',
+    className: `${FEEDBACK_BASE_CLASSES} bg-olive/15 text-olive-dark`,
+  },
+  error: {
+    message: 'Mesaj gönderilemedi. Lütfen biraz sonra tekrar deneyin.',
+    role: 'alert',
+    className: `${FEEDBACK_BASE_CLASSES} bg-red-100 text-red-800`,
+  },
 }
 
 export function ContactForm() {
   const { values, errors, status, setField, handleSubmit } = useContactForm()
   const isSubmitting = status === 'submitting'
-  const statusMessage = STATUS_MESSAGES[status]
+  const feedback = STATUS_FEEDBACK[status]
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
@@ -45,16 +64,9 @@ export function ContactForm() {
         {isSubmitting ? 'Gönderiliyor...' : 'Mesajı Gönder'}
       </Button>
 
-      {statusMessage && (
-        <p
-          role={status === 'error' ? 'alert' : 'status'}
-          className={
-            status === 'error'
-              ? 'rounded-xl bg-red-100 px-4 py-3 text-red-800'
-              : 'rounded-xl bg-olive/15 px-4 py-3 text-olive-dark'
-          }
-        >
-          {statusMessage}
+      {feedback && (
+        <p role={feedback.role} className={feedback.className}>
+          {feedback.message}
         </p>
       )}
     </form>
