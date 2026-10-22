@@ -8,7 +8,8 @@ const BASE_CLASSES =
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary: 'bg-olive text-cream hover:bg-olive-dark',
-  outline: 'border border-cream/60 text-cream hover:bg-cream/10',
+  outline:
+    'border border-cream/60 bg-espresso/30 text-cream backdrop-blur-sm hover:bg-cream/15',
 }
 
 interface VariantProps {
