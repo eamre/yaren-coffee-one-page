@@ -40,8 +40,10 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* Bölüm kendi 6rem üst boşluğunu taşıdığı için menü yüksekliği (4rem)
+     tamamen eklenmez; içerik menü ile ekranın altı arasında ortalanır. */
   section[id] {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 0.5rem;
   }
 
   @media (prefers-reduced-motion: reduce) {
