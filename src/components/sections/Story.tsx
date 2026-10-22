@@ -18,7 +18,7 @@ const STORY_TITLE = (
 export function Story() {
   return (
     <Section id={SECTION_IDS.story} className="bg-wood text-cream">
-      <Container>
+      <Container className="md:pb-16">
         <SectionHeading eyebrow="Hikâyemiz" title={STORY_TITLE} tone="dark" />
 
         <div className="mt-8 grid gap-8 md:mt-12 md:gap-12 lg:grid-cols-2 lg:gap-16">
