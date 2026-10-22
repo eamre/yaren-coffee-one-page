@@ -1,6 +1,6 @@
-import espressoImage from '../assets/images/espresso.jpg'
-import filterCoffeeImage from '../assets/images/filter-coffee.jpg'
-import turkishCoffeeImage from '../assets/images/turkish-coffee.jpg'
+import espressoImage from '../assets/images/espresso.webp'
+import filterCoffeeImage from '../assets/images/filter-coffee.webp'
+import turkishCoffeeImage from '../assets/images/turkish-coffee.webp'
 import type { Product } from '../types'
 
 export const PRODUCTS: Product[] = [
@@ -20,7 +20,7 @@ export const PRODUCTS: Product[] = [
       'Taze çekilmiş çekirdeklerden, tam basınçta çıkan kısa ve kremalı bir fincan. Güne tek yudumda başla.',
     price: 75,
     image: espressoImage,
-    imageAlt: 'Portafiltrede kahve çekirdekleri ve latte art',
+    imageAlt: 'Portafiltreden bardağa akan taze espresso',
   },
   {
     id: 'filter-coffee',

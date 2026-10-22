@@ -1,4 +1,4 @@
-import storyImage from '../../assets/images/story.jpg'
+import storyImage from '../../assets/images/story.webp'
 import { SECTION_IDS } from '../../data/sections'
 import { STORY_INTRO, STORY_VALUES } from '../../data/story'
 import { Container } from '../ui/Container'

@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import heroImage from '../../assets/images/hero.jpg'
+import heroImage from '../../assets/images/hero.webp'
 import { BRAND } from '../../data/brand'
 import { SECTION_IDS } from '../../data/sections'
 import { ButtonLink } from '../ui/Button'
