@@ -9,6 +9,13 @@ interface SectionHeadingProps {
   align?: 'left' | 'center'
 }
 
+// Etiketin yanındaki ince çizgi (süs): rengini etiketten alır.
+function EyebrowLine() {
+  return (
+    <span aria-hidden="true" className="h-px w-8 bg-current opacity-70 sm:w-12" />
+  )
+}
+
 export function SectionHeading({
   eyebrow,
   title,
@@ -17,20 +24,24 @@ export function SectionHeading({
   align = 'center',
 }: SectionHeadingProps) {
   const isDark = tone === 'dark'
+  const isCentered = align === 'center'
 
   return (
-    <header
-      className={classNames(
-        'max-w-2xl',
-        align === 'center' && 'mx-auto text-center',
-      )}
-    >
-      <p className="text-sm font-medium tracking-[0.2em] text-copper uppercase">
+    <header className={classNames('max-w-2xl', isCentered && 'mx-auto')}>
+      <p
+        className={classNames(
+          'flex items-center gap-4 text-base font-semibold tracking-[0.2em] text-copper uppercase',
+          isCentered ? 'justify-center' : 'justify-start',
+        )}
+      >
+        <EyebrowLine />
         {eyebrow}
+        <EyebrowLine />
       </p>
       <h2
         className={classNames(
-          'mt-3 font-display text-3xl font-bold text-balance sm:text-4xl',
+          'mt-9 font-display text-3xl font-bold text-balance sm:text-4xl',
+          isCentered && 'text-center',
           isDark ? 'text-cream' : 'text-espresso',
         )}
       >
@@ -40,6 +51,7 @@ export function SectionHeading({
         <p
           className={classNames(
             'mt-4 text-lg leading-relaxed',
+            isCentered && 'text-center',
             isDark ? 'text-cream/80' : 'text-espresso/75',
           )}
         >
