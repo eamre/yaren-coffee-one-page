@@ -1,7 +1,7 @@
 export const BRAND = {
   name: 'Yâren',
   slogan: 'Her Fincanda Ortak Bir Hikâye',
-  tagline: 'Geleneksel Türk kahvesi, modern demleme kültürüyle buluşuyor.',
+  tagline: 'Kırk Yıllık Hatırı, Bugünün Demleme İnceliğiyle Sunuyoruz.',
 } as const
 
 export const PHOTO_CREDIT = {

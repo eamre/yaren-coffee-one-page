@@ -1,7 +1,7 @@
 import type { NavLink } from '../types'
 
 export const SECTION_IDS = {
-  products: 'urunler',
+  products: 'kahveler',
   story: 'hikaye',
   contact: 'iletisim',
 } as const

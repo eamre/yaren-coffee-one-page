@@ -3,6 +3,7 @@ import { BRAND } from '../../data/brand'
 import { NAV_LINKS, NAV_SECTION_IDS } from '../../data/sections'
 import { useActiveSection } from '../../hooks/useActiveSection'
 import { useScrolled } from '../../hooks/useScrolled'
+import { useSectionHash } from '../../hooks/useSectionHash'
 import { classNames } from '../../utils/classNames'
 import { CoffeeBean } from '../ui/CoffeeBean'
 import { Container } from '../ui/Container'
@@ -23,6 +24,7 @@ export function Navbar() {
   const isScrolled = useScrolled()
   const activeSectionId = useActiveSection(NAV_SECTION_IDS)
   const activeHref = activeSectionId ? `#${activeSectionId}` : null
+  useSectionHash(activeSectionId)
 
   const closeMenu = () => setIsMenuOpen(false)
 
