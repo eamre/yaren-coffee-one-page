@@ -10,7 +10,7 @@
   /* Kaydırılınca menü çubuğunun rengi: koyu kahveye çok az zeytin yeşili. */
   --color-navbar: color-mix(in srgb, var(--color-espresso) 85%, var(--color-olive));
 
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;
 
   --animate-menu-in: menu-in 300ms ease-out;
