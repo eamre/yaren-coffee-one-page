@@ -16,6 +16,8 @@ const DESKTOP_LINK_CLASSES = 'relative transition-colors hover:text-copper'
 const CLEAR_BAR_CLASSES =
   'bg-transparent [text-shadow:0_1px_8px_rgb(0_0_0/0.7),0_0_2px_rgb(0_0_0/0.5)]'
 
+// Üst çubuk: logo, masaüstü menüsü ve telefon menüsü düğmesi. Kaydırınca zemin
+// belirir, hangi bölümdeysek menüde çekirdekle işaretlenir.
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isScrolled = useScrolled()

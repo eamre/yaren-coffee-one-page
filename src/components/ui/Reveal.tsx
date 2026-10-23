@@ -8,6 +8,8 @@ interface RevealProps {
   delayMs?: number
 }
 
+// Ekrana girince aşağıdan yumuşakça beliren sarmalayıcı; `delayMs` ile
+// yan yana duran öğeler sırayla belirir.
 export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
   const { ref, isVisible } = useReveal<HTMLDivElement>()
 

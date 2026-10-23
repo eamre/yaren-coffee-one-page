@@ -33,7 +33,7 @@ export function Story() {
               src={storyImage}
               alt="Kavurma makinesinden dökülen sıcak kahve çekirdekleri"
               loading="lazy"
-              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl sm:aspect-video md:aspect-4/3 lg:aspect-video"
+              className="aspect-video max-h-80 w-full rounded-3xl object-cover shadow-2xl md:aspect-4/3 md:max-h-none lg:aspect-video"
             />
           </Reveal>
 

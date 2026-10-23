@@ -16,6 +16,7 @@ function EyebrowLine() {
   )
 }
 
+// Bölüm başlığı: üstte küçük etiket, altında başlık ve isteğe bağlı açıklama.
 export function SectionHeading({
   eyebrow,
   title,

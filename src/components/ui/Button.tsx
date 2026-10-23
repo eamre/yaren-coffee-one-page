@@ -20,6 +20,7 @@ function getButtonClasses(variant: ButtonVariant, className?: string) {
   return classNames(BASE_CLASSES, VARIANT_CLASSES[variant], className)
 }
 
+// İki görünümlü (dolu / çerçeveli) buton.
 export function Button({
   variant = 'primary',
   className,
@@ -34,6 +35,7 @@ export function Button({
   )
 }
 
+// Butonla aynı görünüme sahip bağlantı (örneğin bölüme kaydıran düğmeler için).
 export function ButtonLink({
   variant = 'primary',
   className,

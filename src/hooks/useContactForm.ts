@@ -13,6 +13,7 @@ import {
 
 const EMPTY_VALUES: ContactFormValues = { name: '', email: '', message: '' }
 
+// İletişim formunun durumunu (değerler, hatalar, gönderim) ve olaylarını yönetir.
 export function useContactForm(submit: ContactSubmitter = submitContactForm) {
   const [values, setValues] = useState<ContactFormValues>(EMPTY_VALUES)
   const [errors, setErrors] = useState<ContactFormErrors>({})

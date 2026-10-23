@@ -16,6 +16,7 @@ interface TextFieldProps {
 const CONTROL_CLASSES =
   'w-full rounded-xl border bg-cream px-4 py-3 text-espresso placeholder:text-espresso/40 transition-colors focus:border-olive focus:outline-2 focus:outline-olive/30'
 
+// Etiketli ve hata mesajlı form alanı; tek satırlı ya da çok satırlı olabilir.
 export function TextField({
   id,
   label,

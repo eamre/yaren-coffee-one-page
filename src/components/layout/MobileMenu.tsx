@@ -7,6 +7,7 @@ interface MobileMenuProps {
   onNavigate: () => void
 }
 
+// Telefonda çubuğun altında açılan buzlu cam menü kartı.
 export function MobileMenu({
   isOpen,
   activeHref,

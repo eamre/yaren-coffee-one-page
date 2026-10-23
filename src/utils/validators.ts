@@ -34,6 +34,8 @@ const FIELD_VALIDATORS: Record<keyof ContactFormValues, FieldValidator> = {
   message: validateMessage,
 }
 
+// Form kuralları ve Türkçe hata mesajları: tek bir alanı ya da tüm formu
+// kontrol eder, hata yoksa `undefined` / boş nesne döner.
 export function validateField(
   field: keyof ContactFormValues,
   value: string,
