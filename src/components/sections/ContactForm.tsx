@@ -1,7 +1,22 @@
 import { useContactForm } from '../../hooks/useContactForm'
-import type { SubmitStatus } from '../../types'
+import type { ContactFormValues, SubmitStatus } from '../../types'
 import { Button } from '../ui/Button'
 import { TextField } from '../ui/TextField'
+
+interface FieldConfig {
+  name: keyof ContactFormValues
+  label: string
+  type?: 'text' | 'email'
+  multiline?: boolean
+  autoComplete?: string
+}
+
+// Formdaki alanlar. Yeni bir alan eklemek için buraya bir kayıt eklemek yeterli.
+const FIELDS: FieldConfig[] = [
+  { name: 'name', label: 'Ad', autoComplete: 'name' },
+  { name: 'email', label: 'E-posta', type: 'email', autoComplete: 'email' },
+  { name: 'message', label: 'Mesaj', multiline: true },
+]
 
 interface StatusFeedback {
   message: string
@@ -35,34 +50,17 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-6">
-      <TextField
-        id="name"
-        label="Ad"
-        value={values.name}
-        error={errors.name}
-        autoComplete="name"
-        onChange={(value) => setField('name', value)}
-        onBlur={() => handleBlur('name')}
-      />
-      <TextField
-        id="email"
-        label="E-posta"
-        type="email"
-        value={values.email}
-        error={errors.email}
-        autoComplete="email"
-        onChange={(value) => setField('email', value)}
-        onBlur={() => handleBlur('email')}
-      />
-      <TextField
-        id="message"
-        label="Mesaj"
-        multiline
-        value={values.message}
-        error={errors.message}
-        onChange={(value) => setField('message', value)}
-        onBlur={() => handleBlur('message')}
-      />
+      {FIELDS.map(({ name, ...fieldProps }) => (
+        <TextField
+          key={name}
+          id={name}
+          {...fieldProps}
+          value={values[name]}
+          error={errors[name]}
+          onChange={(value) => setField(name, value)}
+          onBlur={() => handleBlur(name)}
+        />
+      ))}
 
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? 'Gönderiliyor...' : 'Mesajı Gönder'}

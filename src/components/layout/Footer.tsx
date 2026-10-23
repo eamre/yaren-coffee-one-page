@@ -1,4 +1,4 @@
-import { BRAND } from '../../data/brand'
+import { BRAND, PHOTO_CREDIT } from '../../data/brand'
 import { NAV_LINKS } from '../../data/sections'
 import { Container } from '../ui/Container'
 
@@ -26,12 +26,12 @@ export function Footer() {
         <p className="text-sm text-cream/60">
           © {currentYear} {BRAND.name}. Fotoğraflar:{' '}
           <a
-            href="https://unsplash.com"
+            href={PHOTO_CREDIT.url}
             target="_blank"
             rel="noreferrer"
             className="underline hover:text-copper"
           >
-            Unsplash
+            {PHOTO_CREDIT.name}
           </a>
         </p>
       </Container>

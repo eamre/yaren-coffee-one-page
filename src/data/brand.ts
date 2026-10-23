@@ -4,6 +4,11 @@ export const BRAND = {
   tagline: 'Geleneksel Türk kahvesi, modern demleme kültürüyle buluşuyor.',
 } as const
 
+export const PHOTO_CREDIT = {
+  name: 'Unsplash',
+  url: 'https://unsplash.com',
+} as const
+
 export const CONTACT_INFO = {
   address: 'Moda Caddesi No: 12, Kadıköy / İstanbul',
   email: 'merhaba@yaren.coffee',
