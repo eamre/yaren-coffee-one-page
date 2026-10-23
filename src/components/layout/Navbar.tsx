@@ -13,9 +13,11 @@ import { MobileMenu } from './MobileMenu'
 const DESKTOP_LINK_CLASSES = 'relative transition-colors hover:text-copper'
 
 // Sayfa başında çubuk şeffaftır; yazılar fotoğrafın açık bölgelerinde de
-// okunsun diye harflerin etrafına yumuşak, koyu bir gölge çizilir.
-const CLEAR_BAR_CLASSES =
-  'bg-transparent [text-shadow:0_1px_8px_rgb(0_0_0/0.7),0_0_2px_rgb(0_0_0/0.5)]'
+// okunsun diye çubuktaki harflerin etrafına yumuşak, koyu bir gölge çizilir.
+// Gölge yalnızca çubuk satırına verilir: telefon menüsü kartı bunu devralıp
+// koyu yazılarını bulanıklaştırmasın.
+const CLEAR_BAR_TEXT_SHADOW =
+  '[text-shadow:0_1px_8px_rgb(0_0_0/0.7),0_0_2px_rgb(0_0_0/0.5)]'
 
 // Üst çubuk: logo, masaüstü menüsü ve telefon menüsü düğmesi. Kaydırınca zemin
 // belirir, hangi bölümdeysek menüde çekirdekle işaretlenir.
@@ -32,10 +34,15 @@ export function Navbar() {
     <header
       className={classNames(
         'fixed inset-x-0 top-0 z-50 backdrop-blur transition-colors duration-300',
-        isScrolled ? 'bg-navbar/88 shadow-lg' : CLEAR_BAR_CLASSES,
+        isScrolled ? 'bg-navbar/88 shadow-lg' : 'bg-transparent',
       )}
     >
-      <Container className="flex h-16 items-center justify-between">
+      <Container
+        className={classNames(
+          'flex h-16 items-center justify-between',
+          !isScrolled && CLEAR_BAR_TEXT_SHADOW,
+        )}
+      >
         <a
           href="#"
           className="py-1 font-display text-3xl font-bold text-cream"

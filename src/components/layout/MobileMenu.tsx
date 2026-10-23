@@ -7,7 +7,8 @@ interface MobileMenuProps {
   onNavigate: () => void
 }
 
-// Telefonda çubuğun altında açılan buzlu cam menü kartı.
+// Telefonda çubuğun altında açılan menü kartı. Zemini tam opaktır: yarı saydam
+// olunca arkadaki hero başlığı kartın içinden silik görünüyordu.
 export function MobileMenu({
   isOpen,
   activeHref,
@@ -24,7 +25,7 @@ export function MobileMenu({
           : 'pointer-events-none invisible opacity-0',
       )}
     >
-      <ul className="divide-y divide-espresso/10 rounded-2xl bg-cream/95 px-6 py-2 shadow-xl backdrop-blur-md">
+      <ul className="divide-y divide-espresso/10 rounded-2xl bg-cream px-6 py-2 shadow-xl">
         {NAV_LINKS.map(({ label, href }) => {
           const isActive = href === activeHref
 
