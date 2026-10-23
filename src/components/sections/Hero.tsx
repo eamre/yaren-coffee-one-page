@@ -9,7 +9,8 @@ import { Container } from '../ui/Container'
 import { Steam } from '../ui/Steam'
 
 // Masaüstü fotoğrafına geçilen ekran genişliği (Tailwind'in `md` sınırı).
-const WIDE_PHOTO_MEDIA = '(min-width: 768px)'
+// `index.css` ile aynı birimde (rem) olmalı, yoksa iki taraf farklı eşikte geçer.
+const WIDE_PHOTO_MEDIA = '(min-width: 48rem)'
 
 // Masaüstünde yazı bloğunun (yaklaşık 18 rem yüksekliğinde) altı, fotoğraftaki
 // fincanın kenarından yaklaşık 1,8 rem yukarıda bitsin diye üst boşluk ekran

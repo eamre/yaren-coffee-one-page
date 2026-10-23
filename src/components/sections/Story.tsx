@@ -21,13 +21,13 @@ export function Story() {
       <Container className="md:pb-16">
         <SectionHeading eyebrow="Hikâyemiz" title={STORY_TITLE} tone="dark" />
 
-        <div className="mt-8 grid gap-8 md:mt-12 md:gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-10 lg:gap-16">
           <Reveal className="h-full">
             <img
               src={storyImage}
               alt="Kavurma makinesinden dökülen sıcak kahve çekirdekleri"
               loading="lazy"
-              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl lg:aspect-auto lg:h-full"
+              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl md:aspect-auto md:h-full"
             />
           </Reveal>
 
@@ -35,11 +35,11 @@ export function Story() {
             delayMs={150}
             className="flex h-full flex-col justify-between gap-10"
           >
-            <p className="text-center leading-relaxed text-cream/80 md:text-left md:text-lg">
+            <p className="text-center leading-relaxed text-cream/80 md:text-left md:text-base lg:text-lg">
               {STORY_INTRO}
             </p>
 
-            <ul className="grid gap-6 text-center sm:grid-cols-3 md:text-left">
+            <ul className="grid gap-6 text-center sm:grid-cols-3 md:grid-cols-1 md:text-left lg:grid-cols-3">
               {STORY_VALUES.map(({ title, description }) => (
                 <li key={title}>
                   <h3 className="font-display text-xl font-bold text-copper">

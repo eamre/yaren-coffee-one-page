@@ -15,7 +15,7 @@ const INFO_ITEMS = [
 export function Contact() {
   return (
     <Section id={SECTION_IDS.contact} className="bg-sand">
-      <Container className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <Container className="grid gap-10 md:grid-cols-2 md:gap-8 lg:gap-16">
         <Reveal>
           <SectionHeading
             eyebrow="İletişim"
@@ -37,7 +37,7 @@ export function Contact() {
         </Reveal>
 
         <Reveal delayMs={150}>
-          <div className="rounded-3xl bg-cream p-6 shadow-lg sm:p-8">
+          <div className="rounded-3xl bg-cream p-6 shadow-lg sm:p-8 md:p-6 lg:p-8">
             <ContactForm />
           </div>
         </Reveal>
