@@ -6,7 +6,7 @@
 
 ## Özet
 
-Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, ürünler (Türk Kahvesi, Espresso, Filtre Kahve), marka hikayesi ve doğrulamalı bir iletişim formu bulunuyor. Kodu SOLID ve temiz kod prensiplerine göre küçük, tek sorumluluklu bileşenlere ve saf fonksiyonlara böldüm. Geliştirme sürecinde yardımcı araç olarak Claude Code kullandım. Fotoğraflar Unsplash'ten alınmıştır.
+Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, ürünler (Türk Kahvesi, Espresso, Filtre Kahve), marka hikayesi ve doğrulamalı bir iletişim formu bulunuyor. Kodu SOLID ve temiz kod prensiplerine göre küçük, tek sorumluluklu bileşenlere ve saf fonksiyonlara böldüm. Fotoğraflar Unsplash'ten alınmıştır.
 
 ## İçindekiler
 
