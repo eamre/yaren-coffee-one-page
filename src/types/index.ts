@@ -12,7 +12,10 @@ export interface NavLink {
   href: string
 }
 
+export type StoryValueIcon = 'cezve' | 'bean' | 'cups'
+
 export interface StoryValue {
+  icon: StoryValueIcon
   title: string
   description: string
 }

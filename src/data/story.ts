@@ -5,14 +5,17 @@ export const STORY_INTRO =
 
 export const STORY_VALUES: StoryValue[] = [
   {
+    icon: 'cezve',
     title: 'Gelenek',
     description: 'Cezvede pişen kahvenin yüzyıllık ritmini koruyoruz.',
   },
   {
+    icon: 'bean',
     title: 'Zanaat',
     description: 'Her çekirdeği kendi tarifine göre kavuruyoruz.',
   },
   {
+    icon: 'cups',
     title: 'Sohbet',
     description: 'Bir fincan, iki dost: masa hep paylaşmak için kurulur.',
   },
