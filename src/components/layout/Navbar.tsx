@@ -4,6 +4,7 @@ import { NAV_LINKS, NAV_SECTION_IDS } from '../../data/sections'
 import { useActiveSection } from '../../hooks/useActiveSection'
 import { useScrolled } from '../../hooks/useScrolled'
 import { classNames } from '../../utils/classNames'
+import { CoffeeBean } from '../ui/CoffeeBean'
 import { Container } from '../ui/Container'
 import { MenuIcon } from './MenuIcon'
 import { MobileMenu } from './MobileMenu'
@@ -51,11 +52,12 @@ export function Navbar() {
                 )}
               >
                 {label}
-                <span
-                  aria-hidden="true"
+                <CoffeeBean
                   className={classNames(
-                    'absolute -bottom-2 left-1/2 size-1.5 -translate-x-1/2 rounded-full bg-copper transition duration-300',
-                    isActive ? 'scale-100 opacity-100' : 'scale-0 opacity-0',
+                    'absolute -bottom-3 left-1/2 h-3 w-2.5 -translate-x-1/2 text-copper transition duration-300',
+                    isActive
+                      ? 'rotate-25 scale-100 opacity-100'
+                      : '-rotate-45 scale-0 opacity-0',
                   )}
                 />
               </a>
