@@ -77,13 +77,35 @@
 @layer components {
   .hero-photo {
     container-type: size;
-  }
 
-  .hero-photo-frame {
-    /* hero.webp dikey bir fotoğraf (2:3): yükseklik = genişlik × 1,5 */
+    /* Telefon: dikey fotoğraf (hero-portrait.webp, 2:3), fincana yaklaştırılmış.
+       Yükseklik = genişlik × 1,5 */
     --photo-height-per-width: 1.5;
     /* Dikey odak noktası, `object-position`'daki gibi: 0 = üst, 1 = alt */
     --photo-focus-y: 0.7;
+    /* Yaklaştırma oranı: yanlardaki dekoratif bitkileri dışarıda bırakır */
+    --photo-zoom: 1.35;
+    /* Öndeki fincanın yüzey merkezi, fotoğrafın yüzdesi olarak (duman buradan çıkar) */
+    --cup-left: 56%;
+    --cup-top: 70%;
+  }
+
+  /* Masaüstü: yatay fotoğraf (hero-wide.webp, 1470 × 720), yaklaştırma yok */
+  @media (min-width: 48rem) {
+    .hero-photo {
+      --photo-height-per-width: 0.49;
+      --photo-focus-y: 0.7;
+      --photo-zoom: 1;
+      --cup-left: 50%;
+      --cup-top: 72%;
+    }
+  }
+
+  .hero-photo-zoom {
+    scale: var(--photo-zoom);
+  }
+
+  .hero-photo-frame {
     /* `object-cover`: fotoğraf hero'yu hem yatayda hem dikeyde kaplamalı */
     --frame-width: max(100cqw, calc(100cqh / var(--photo-height-per-width)));
 
@@ -95,6 +117,14 @@
       (100cqh - var(--frame-width) * var(--photo-height-per-width)) *
         var(--photo-focus-y)
     );
+  }
+
+  /* Dumanın çıkış noktası: fincanın yüzey merkezi */
+  .hero-steam-anchor {
+    position: absolute;
+    left: var(--cup-left);
+    top: var(--cup-top);
+    translate: -50% -100%;
   }
 
   .hero-steam {
