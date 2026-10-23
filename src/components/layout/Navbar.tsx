@@ -62,7 +62,7 @@ export function Navbar() {
                 aria-current={isActive ? 'location' : undefined}
                 className={classNames(
                   DESKTOP_LINK_CLASSES,
-                  isActive ? 'text-cream' : 'text-cream/80',
+                  isActive ? 'text-white' : 'text-cream/95',
                 )}
               >
                 {label}
