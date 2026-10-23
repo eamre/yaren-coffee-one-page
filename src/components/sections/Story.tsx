@@ -38,7 +38,7 @@ export function Story() {
           </Reveal>
 
           <Reveal
-            delayMs={150}
+            delayMs={80}
             className="space-y-4 text-center leading-relaxed text-cream/80 md:text-left md:text-base lg:text-lg"
           >
             {STORY_PARAGRAPHS.map((paragraph) => (
@@ -47,7 +47,7 @@ export function Story() {
           </Reveal>
         </div>
 
-        <Reveal delayMs={250} className="mt-8 md:mt-10">
+        <Reveal delayMs={150} className="mt-8 md:mt-10">
           <ul className="grid gap-3 sm:grid-cols-3 md:gap-6">
             {STORY_VALUES.map(({ icon, title, description }) => (
               <li key={title} className={VALUE_CARD_CLASSES}>

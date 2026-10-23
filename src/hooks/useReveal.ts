@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 
 const VISIBILITY_THRESHOLD = 0.15
 
-// Eleman ekranda ilk göründüğünde bir kez `isVisible` değerini true yapar.
+// Ekranın altından biraz önce başlar: içerik ekrana girerken zaten belirmiş olur.
+const EARLY_START_MARGIN = '0px 0px 10% 0px'
+
+// Eleman ekrana girmek üzereyken bir kez `isVisible` değerini true yapar.
 export function useReveal<T extends HTMLElement>() {
   const ref = useRef<T>(null)
   const [isVisible, setIsVisible] = useState(false)
@@ -17,7 +20,7 @@ export function useReveal<T extends HTMLElement>() {
         setIsVisible(true)
         observer.disconnect()
       },
-      { threshold: VISIBILITY_THRESHOLD },
+      { threshold: VISIBILITY_THRESHOLD, rootMargin: EARLY_START_MARGIN },
     )
 
     observer.observe(element)

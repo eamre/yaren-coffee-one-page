@@ -18,7 +18,7 @@ export function Reveal({ children, className, delayMs = 0 }: RevealProps) {
       ref={ref}
       style={{ transitionDelay: `${delayMs}ms` }}
       className={classNames(
-        'transition duration-700 ease-out motion-reduce:transition-none',
+        'transition duration-450 ease-out motion-reduce:transition-none',
         isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0',
         className,
       )}

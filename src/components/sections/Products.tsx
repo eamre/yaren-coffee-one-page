@@ -6,7 +6,7 @@ import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
 import { SectionHeading } from '../ui/SectionHeading'
 
-const CARD_REVEAL_STEP_MS = 150
+const CARD_REVEAL_STEP_MS = 80
 
 export function Products() {
   return (

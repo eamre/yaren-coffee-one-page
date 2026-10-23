@@ -36,7 +36,7 @@ export function Contact() {
           </dl>
         </Reveal>
 
-        <Reveal delayMs={150}>
+        <Reveal delayMs={80}>
           <div className="rounded-3xl bg-cream p-6 shadow-lg sm:p-8 md:p-6 lg:p-8">
             <ContactForm />
           </div>
