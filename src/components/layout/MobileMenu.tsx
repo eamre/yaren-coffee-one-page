@@ -19,7 +19,7 @@ export function MobileMenu({
       id="mobile-menu"
       aria-label="Mobil menü"
       className={classNames(
-        'absolute inset-x-0 top-full px-5 pt-2 transition-[opacity,visibility] duration-200 md:hidden motion-reduce:transition-none',
+        'absolute inset-x-0 top-full px-5 pt-3.5 transition-[opacity,visibility] duration-200 md:hidden motion-reduce:transition-none',
         isOpen
           ? 'animate-menu-in opacity-100 motion-reduce:animate-none'
           : 'pointer-events-none invisible opacity-0',
