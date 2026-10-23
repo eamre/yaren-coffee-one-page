@@ -16,10 +16,10 @@ const STORY_TITLE = (
   </span>
 )
 
-// İkon solda, metin sağda durur. Yalnızca sayfanın tek sütun olduğu ve kartların
-// yan yana dizildiği dar tablet genişliğinde ikon üstte, metin ortadadır.
+// Telefonda ve geniş ekranda ikon solda, metin sağda durur. Aradaki
+// genişliklerde kartlar dar kaldığı için ikon üstte, metin altındadır.
 const VALUE_CARD_CLASSES =
-  'flex gap-4 rounded-2xl border border-cream/10 bg-cream/5 p-4 sm:flex-col sm:items-center sm:text-center md:flex-row md:items-start md:text-left'
+  'flex gap-4 rounded-2xl border border-cream/10 bg-cream/5 p-4 sm:flex-col sm:items-center sm:text-center md:items-start md:text-left lg:flex-row'
 
 export function Story() {
   return (
@@ -27,39 +27,38 @@ export function Story() {
       <Container className="md:pb-16">
         <SectionHeading eyebrow="Hikâyemiz" title={STORY_TITLE} tone="dark" />
 
-        <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-2 md:gap-10 lg:gap-16">
-          <Reveal className="h-full">
+        <div className="mt-8 grid gap-8 md:mt-12 md:grid-cols-2 md:items-center md:gap-10 lg:gap-16">
+          <Reveal>
             <img
               src={storyImage}
               alt="Kavurma makinesinden dökülen sıcak kahve çekirdekleri"
               loading="lazy"
-              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl md:aspect-auto md:h-full"
+              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl sm:aspect-video md:aspect-4/3 lg:aspect-video"
             />
           </Reveal>
 
-          <Reveal
-            delayMs={150}
-            className="flex h-full flex-col justify-between gap-10"
-          >
+          <Reveal delayMs={150}>
             <p className="text-center leading-relaxed text-cream/80 md:text-left md:text-base lg:text-lg">
               {STORY_INTRO}
             </p>
-
-            <ul className="grid gap-3 sm:grid-cols-3 md:grid-cols-1">
-              {STORY_VALUES.map(({ icon, title, description }) => (
-                <li key={title} className={VALUE_CARD_CLASSES}>
-                  <ValueIcon name={icon} className="h-9 w-9 shrink-0 text-copper" />
-                  <div>
-                    <h3 className="font-display text-xl font-bold">{title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-cream/75">
-                      {description}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
           </Reveal>
         </div>
+
+        <Reveal delayMs={250} className="mt-8 md:mt-10">
+          <ul className="grid gap-3 sm:grid-cols-3 md:gap-6">
+            {STORY_VALUES.map(({ icon, title, description }) => (
+              <li key={title} className={VALUE_CARD_CLASSES}>
+                <ValueIcon name={icon} className="h-9 w-9 shrink-0 text-copper" />
+                <div>
+                  <h3 className="font-display text-xl font-bold">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-cream/75">
+                    {description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
       </Container>
     </Section>
   )
