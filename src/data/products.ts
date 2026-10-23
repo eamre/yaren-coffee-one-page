@@ -11,7 +11,8 @@ export const PRODUCTS: Product[] = [
       'Bakır cezvede, kısık ateşte pişen yoğun ve köpüklü klasik. Yanında bir bardak su ve bir parça lokum.',
     price: 85,
     image: turkishCoffeeImage,
-    imageAlt: 'Köpüklü bir fincan Türk kahvesi',
+    imageAlt:
+      'Bakır tepside desenli fincanda köpüklü Türk kahvesi, yanında su bardağı ve lokum',
   },
   {
     id: 'espresso',
