@@ -154,20 +154,35 @@
 
   /* Yazının arkasında okunurluk için yumuşak, koyu bir leke. */
   .hero-text-scrim {
+    /* Koyuluk miktarı: telefonda biraz yüksek, masaüstünde daha hafif */
+    --scrim-strength: 45%;
+
     background: radial-gradient(
       ellipse 75% 38% at 50% 44%,
-      color-mix(in srgb, var(--color-espresso) 55%, transparent),
+      color-mix(in srgb, var(--color-espresso) var(--scrim-strength), transparent),
       transparent
     );
   }
 
   /* Kenarlardaki dekoratif öğeleri (saksı, bitki) bastıran hafif vinyet. */
   .hero-vignette {
+    --vignette-strength: 70%;
+
     background: radial-gradient(
       ellipse at center,
       transparent 30%,
-      color-mix(in srgb, var(--color-espresso) 85%, transparent) 85%
+      color-mix(in srgb, var(--color-espresso) var(--vignette-strength), transparent) 85%
     );
+  }
+
+  @media (min-width: 48rem) {
+    .hero-text-scrim {
+      --scrim-strength: 30%;
+    }
+
+    .hero-vignette {
+      --vignette-strength: 45%;
+    }
   }
 }
 
