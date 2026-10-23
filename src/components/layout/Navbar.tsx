@@ -11,6 +11,11 @@ import { MobileMenu } from './MobileMenu'
 
 const DESKTOP_LINK_CLASSES = 'relative transition-colors hover:text-copper'
 
+// Sayfa başında çubuk şeffaftır; yazılar fotoğrafın açık bölgelerinde de
+// okunsun diye harflerin etrafına yumuşak, koyu bir gölge çizilir.
+const CLEAR_BAR_CLASSES =
+  'bg-transparent [text-shadow:0_1px_8px_rgb(0_0_0/0.7),0_0_2px_rgb(0_0_0/0.5)]'
+
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const isScrolled = useScrolled()
@@ -22,10 +27,8 @@ export function Navbar() {
   return (
     <header
       className={classNames(
-        'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
-        isScrolled
-          ? 'bg-navbar/88 shadow-lg backdrop-blur'
-          : 'bg-transparent',
+        'fixed inset-x-0 top-0 z-50 backdrop-blur transition-colors duration-300',
+        isScrolled ? 'bg-navbar/88 shadow-lg' : CLEAR_BAR_CLASSES,
       )}
     >
       <Container className="flex h-16 items-center justify-between">
