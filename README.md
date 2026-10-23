@@ -2,11 +2,11 @@
 
 > Her Fincanda Ortak Bir Hikâye
 
-**Yâren**, geleneksel Türk kahvesini espresso ve modern demleme kültürüyle birleştiren hayali bir kahve markasıdır. Bu repo, marka için hazırlanan **modern, sıcak ve mobil uyumlu tek sayfalık web sitesinin** kaynak kodudur.
+**Yâren**, geleneksel Türk kahvesini espresso ve modern demleme kültürüyle birleştiren hayali bir kahve markasıdır. Bu repo, marka için hazırlanan **modern, sıcak ve mobil uyumlu tek sayfalık web sitesinin** kaynak kodlarını içermektedir.
 
 ## Özet
 
-Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, ürünler (Türk Kahvesi, Espresso, Filtre Kahve), marka hikâyesi ve doğrulamalı bir iletişim formu bulunuyor. Kodu SOLID ve temiz kod prensiplerine göre küçük, tek sorumluluklu bileşenlere ve saf fonksiyonlara böldüm. Geliştirme sürecinde yapay zekâ asistanı olarak Claude (Claude Code) kullandım; tasarım kararlarını, içeriği ve kodun yönünü adım adım birlikte belirledik. Fotoğraflar Unsplash'ten alınmıştır.
+Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, ürünler (Türk Kahvesi, Espresso, Filtre Kahve), marka hikayesi ve doğrulamalı bir iletişim formu bulunuyor. Kodu SOLID ve temiz kod prensiplerine göre küçük, tek sorumluluklu bileşenlere ve saf fonksiyonlara böldüm. Geliştirme sürecinde yardımcı araç olarak Claude Code kullandım. Fotoğraflar Unsplash'ten alınmıştır.
 
 ## İçindekiler
 
@@ -24,9 +24,9 @@ Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, �
 
 ## Özellikler
 
-- **Hero:** Marka adı, slogan ve ürün bölümüne yumuşak kaydıran **"Kahveleri Keşfet"** butonu. Fotoğraftaki fincandan yükselen animasyonlu duman.
+- **Hero:** Marka adı, slogan ve ürün bölümüne yumuşak bir şekilde kaydıran **"Kahveleri Keşfet"** butonu. Fotoğraftaki fincandan yükselen animasyonlu duman.
 - **Ürünler:** Türk Kahvesi, Espresso ve Filtre Kahve için görsel, kısa açıklama ve örnek fiyat. Kartlar kaydırınca sırayla belirir, üzerine gelince hafifçe yükselir.
-- **Hikâye:** "Yâren" kelimesinin anlamı (dost, can yoldaşı) ve markanın üç değeri: Gelenek, Zanaat, Sohbet.
+- **Hikaye:** "Yâren" kelimesinin anlamı (dost, can yoldaşı) ve markanın üç değeri: Gelenek, Zanaat, Sohbet.
 - **İletişim formu:** Ad, e-posta ve mesaj alanları. Boş alanlar ve e-posta biçimi kontrol edilir, geçerli gönderimde başarı mesajı gösterilir. Sunucu bağlantısı gerekmez.
 - **Mobil uyum:** Telefonda buzlu cam görünümlü açılır menü, yeniden düzenlenen bölüm boşlukları ve başlıklar. Masaüstünde bölümler ekranı doldurur.
 - **Hareket hassasiyeti:** İşletim sisteminde "hareketi azalt" ayarı açık olan kullanıcılarda animasyonlar kapanır.
@@ -71,14 +71,15 @@ Diğer komutlar:
 
 ```
 src/
-├── assets/images/     Optimize edilmiş WebP/JPG fotoğraflar
+├── assets/images/     Optimize edilmiş WebP fotoğraflar
 ├── components/
-│   ├── layout/        Navbar, MobileMenu, Footer
+│   ├── layout/        Navbar, MobileMenu, MenuIcon, Footer
 │   ├── sections/      Hero, Products, Story, Contact, ContactForm
 │   └── ui/            Button, Container, Section, SectionHeading,
 │                      ProductCard, Reveal, Steam, TextField
 ├── data/              Marka, ürün, navigasyon ve hikâye içerikleri
-├── hooks/             useContactForm, useReveal, useScrolled
+├── hooks/             useContactForm, useReveal, useScrolled,
+│                      useActiveSection
 ├── services/          contactService (sahte gönderim)
 ├── types/             Paylaşılan TypeScript tipleri
 ├── utils/             classNames, formatPrice, validators
@@ -98,16 +99,13 @@ src/
 
 ## Kod Mimarisi
 
-Kodun, inceleyen kişinin aklını karıştırmaması hedeflendi.
+`App.tsx`, sayfanın ana bölümlerini bir araya getirir. Bileşenler `layout/` (menü ve alt bilgi), `sections/` (sayfa bölümleri) ve `ui/` (tekrar kullanılan arayüz parçaları) klasörlerinde tutulur. Her bileşen ve fonksiyon tek bir iş yapar; içerik, mantık ve görünüm ayrı katmanlarda tutulur.
 
-- **Tek sorumluluk (SRP):** Her bileşen tek iş yapar. `ContactForm` sadece formu çizer; durum ve gönderim mantığı `useContactForm` hook'unda, doğrulama kuralları `validators.ts` içindedir.
-- **Açık/kapalı prensibi (OCP):** Yeni ürün eklemek `data/products.ts`'e bir kayıt eklemektir, bileşene dokunulmaz. Doğrulama kuralları `FIELD_VALIDATORS` haritasından genişler.
-- **Bağımlılıkların tersine çevrilmesi (DIP):** `useContactForm`, gönderim fonksiyonunu parametre olarak alır. Şu an sahte bir `submitContactForm` kullanılır; gerçek bir API'ye geçmek yalnızca `services/contactService.ts` dosyasını değiştirmeyi gerektirir.
-- **İçerik ve görünüm ayrımı:** Metinler, fiyatlar ve bağlantılar `data/` klasöründedir; bileşenler yalnızca bunları çizer.
-- **Tekrarın önlenmesi:** Ortak bölüm boşluğu `Section`, başlık yapısı `SectionHeading`, buton stilleri `Button` bileşenindedir.
-- **Saf fonksiyonlar:** `validateContactForm`, `formatPrice`, `classNames` yan etkisizdir ve kolay test edilir.
-- **Tipler:** `any` kullanılmadı, paylaşılan tipler `src/types` altında toplandı.
-- **Commit geçmişi:** [Conventional Commits](https://www.conventionalcommits.org) biçiminde, küçük ve tek konulu commit'ler.
+Marka, navigasyon ve ürün içerikleri `src/data/` altında tanımlıdır. Böylece örneğin yeni bir kahve eklemek için ürün kartı bileşenini değiştirmek gerekmez; ürün listesine yeni bir kayıt eklenir.
+
+İletişim formunda `ContactForm` arayüzü oluşturur, `useContactForm` form durumunu ve gönderim akışını yönetir, `validators.ts` alanları kontrol eder. `contactService.ts`, case study sunucu bağlantısı istemediği için gönderimi taklit eder.
+
+Tekrar kullanılan davranışlar (kaydırınca beliren animasyon, menüdeki aktif bölüm gibi) `src/hooks/` altında özel hook'lara ayrılmıştır. Ortak TypeScript tipleri `src/types/`, biçimlendirme ve yardımcı fonksiyonlar `src/utils/` altında yer alır.
 
 ## İletişim Formu
 
@@ -126,29 +124,27 @@ Form `noValidate` ile işaretlidir; kontrol tarayıcının varsayılan balonlar�
 
 ## Erişilebilirlik
 
-- Anlamlı HTML: `header`, `nav`, `main`, `section`, `footer`, `article`.
-- Mobil menü düğmesi `aria-expanded` ve `aria-controls` kullanır. Menü kapalıyken klavye odağından ve ekran okuyuculardan gizlenir.
-- Form alanlarında `aria-invalid` ve `aria-describedby`; başarı mesajı `role="status"`, hata mesajı `role="alert"`.
-- Tüm dokunma hedefleri mobilde en az 44 px.
-- Dekoratif görseller ve animasyonlar `aria-hidden` ile işaretlidir.
-- `prefers-reduced-motion` desteği: animasyonlar ve yumuşak kaydırma kapatılır.
-- Klavye odağı için görünür `focus-visible` çerçevesi.
+- **Anlamlı yapı:** Sayfa `header`, `nav`, `main`, `section`, `footer` ve `article` gibi anlamlı HTML etiketleriyle kurulu. Sayfa dili `tr` olarak belirtilmiş, üç menünün her birinin ayrı bir adı var (Ana menü, Mobil menü, Alt menü).
+- **Klavye ve ekran okuyucu:** Mobil menü düğmesi açık mı kapalı mı olduğunu bildirir (`aria-expanded`). Menü kapalıyken hem klavye odağından hem ekran okuyuculardan gizlenir. Menüde o an bulunulan bölüm `aria-current` ile işaretlenir.
+- **Form:** Her alanın etiketi alanla bağlıdır. Hatalar ilgili alana bağlanır (`aria-invalid`, `aria-describedby`), başarı mesajı `role="status"`, hata mesajı `role="alert"` ile duyurulur.
+- **Görseller:** Ürün ve hikâye fotoğraflarında açıklayıcı alt metin var. Süs amaçlı hero fotoğrafı, duman ve ikonlar ekran okuyuculardan gizlenir.
+- **Hareket hassasiyeti:** İşletim sisteminde "hareketi azalt" açıksa animasyonlar ve yumuşak kaydırma kapanır (`prefers-reduced-motion`).
+- **Dokunma ve odak:** Mobilde butonlar ve menü linkleri en az 44 px yüksekliktedir. Butonlarda ve form alanlarında belirgin bir odak çerçevesi vardır; diğer linklerde tarayıcının varsayılan odak çerçevesi korunur.
 
 ## Performans
 
-- Fotoğraflar **WebP** biçiminde ve gerçekte gösterildikleri boyuta göre ölçeklendirildi (hero ≈ 257 KB, kartlar ≈ 50-200 KB).
-- Hero dışındaki görseller `loading="lazy"` ile gecikmeli yüklenir; hero görseli `fetchPriority="high"` ile öncelikli yüklenir.
-- Yazı tipleri `display=swap` ile yüklenir, `preconnect` ipuçları vardır.
-- Kaydırma animasyonları `IntersectionObserver` ile yapılır, kaydırma olayı dinlenmez. Menü için kullanılan kaydırma dinleyicisi `passive` işaretlidir.
-- Animasyonlar yalnızca `transform` ve `opacity` özelliklerini kullanır.
+- **Hafif görseller:** Fotoğraflar WebP biçiminde ve ekranda gösterildikleri boyuta göre küçültüldü. En büyüğü olan hero görseli yaklaşık 260 KB.
+- **Gerektiğinde yüklenen görseller:** Sayfanın en üstündeki hero görseli hemen yüklenir. Diğerleri ekrana yaklaşınca yüklenir (`loading="lazy"`).
+- **Hızlı açılan yazılar:** Yazı tipleri yüklenirken metin önce sistem fontuyla görünür, yazı tipi gelince değişir (`display=swap`). Sayfa boş beklemez.
+- **Akıcı animasyonlar:** Animasyonlar yalnızca saydamlık ve konum değişikliği kullanır. Kaydırınca beliren öğeler ve menüdeki aktif bölüm `IntersectionObserver` ile takip edilir, yani sayfayı her kaydırışta ağır bir kod çalışmaz.
 
 ## Kullanılan Araçlar
 
-- **Claude (Claude Code):** Yapay zekâ destekli geliştirme asistanı. Mimari önerileri, kod yazımı, tarayıcıda gerçek test (masaüstü ve mobil), erişilebilirlik ve performans kontrolleri için kullanıldı.
 - **Visual Studio Code:** Kod takibi ve düzenleme.
 - **Git:** Sürüm kontrolü.
 - **Unsplash:** Ücretsiz fotoğraflar.
+- **Claude Code:** Yapay zekâ destekli geliştirme asistanı.
 
 ## Görseller
 
-Sitedeki tüm fotoğraflar [Unsplash](https://unsplash.com) üzerinden, Unsplash Lisansı kapsamında kullanılmıştır. "Yâren" markası, adresi, telefonu ve fiyatları tamamen hayalidir.
+Fotoğraflar [Unsplash](https://unsplash.com) üzerinden, Türk Kahvesi görseli yapay zekâ ile hazırlanmıştır.
