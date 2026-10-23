@@ -40,6 +40,7 @@ Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, �
 | [Vite](https://vite.dev) | Hızlı geliştirme sunucusu ve derleme |
 | [Tailwind CSS 4](https://tailwindcss.com) | Yardımcı sınıflar ve tema değişkenleri (`@theme`) |
 | ESLint + typescript-eslint | Kod kalitesi kontrolü |
+| [Vitest](https://vitest.dev) | Birim testleri |
 | Google Fonts | Fraunces (başlıklar) ve DM Sans (gövde metni) |
 
 Ek bir arayüz kütüphanesi, router ya da durum yönetim aracı kullanılmadı. Tek sayfalık bir site için gereksiz olurdu.
@@ -66,6 +67,8 @@ Diğer komutlar:
 | `npm run build` | Tip kontrolü yapıp üretim derlemesi oluşturur (`dist/`) |
 | `npm run preview` | Üretim derlemesini yerelde önizler |
 | `npm run lint` | ESLint ile kodu denetler |
+| `npm test` | Birim testlerini bir kez çalıştırır |
+| `npm run test:watch` | Testleri izleme modunda çalıştırır (dosya değişince yeniden) |
 
 ## Proje Yapısı
 
@@ -82,7 +85,7 @@ src/
 │                      useActiveSection
 ├── services/          contactService (sahte gönderim)
 ├── types/             Paylaşılan TypeScript tipleri
-├── utils/             classNames, formatPrice, validators
+├── utils/             classNames, formatPrice, validators (+ *.test.ts)
 ├── App.tsx            Sadece bölümleri sıralar
 ├── index.css          Tema değişkenleri ve özel CSS
 └── main.tsx
@@ -106,6 +109,8 @@ Marka, navigasyon ve ürün içerikleri `src/data/` altında tanımlıdır. Böy
 İletişim formunda `ContactForm` arayüzü oluşturur, `useContactForm` form durumunu ve gönderim akışını yönetir, `validators.ts` alanları kontrol eder. `contactService.ts`, case study sunucu bağlantısı istemediği için gönderimi taklit eder.
 
 Tekrar kullanılan davranışlar (kaydırınca beliren animasyon, menüdeki aktif bölüm gibi) `src/hooks/` altında özel hook'lara ayrılmıştır. Ortak TypeScript tipleri `src/types/`, biçimlendirme ve yardımcı fonksiyonlar `src/utils/` altında yer alır.
+
+Doğrulama kuralları, fiyat biçimlendirme ve sınıf birleştirme gibi saf fonksiyonlar Vitest ile test edilir. Test dosyaları, test ettikleri dosyanın yanında durur (`validators.ts` ile `validators.test.ts` gibi).
 
 ## İletişim Formu
 
