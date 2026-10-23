@@ -2,6 +2,8 @@
 
 > Her Fincanda Ortak Bir Hikâye
 
+**Canlı site:** https://yaren-coffee.onrender.com/
+
 **Yâren**, geleneksel Türk kahvesini espresso ve modern demleme kültürüyle birleştiren hayali bir kahve markasıdır. Bu repo, marka için hazırlanan **modern, sıcak ve mobil uyumlu tek sayfalık web sitesinin** kaynak kodlarını içermektedir.
 
 ## Özet
@@ -19,7 +21,6 @@ Proje React 19, TypeScript, Vite ve Tailwind CSS üzerine kuruludur. Kodun sürd
 - [İletişim Formu](#i̇letişim-formu)
 - [Erişilebilirlik](#erişilebilirlik)
 - [Performans](#performans)
-- [Kullanılan Araçlar](#kullanılan-araçlar)
 - [Görseller](#görseller)
 
 ## Özellikler
@@ -41,7 +42,7 @@ Proje React 19, TypeScript, Vite ve Tailwind CSS üzerine kuruludur. Kodun sürd
 | [Tailwind CSS 4](https://tailwindcss.com) | Yardımcı sınıflar ve tema değişkenleri (`@theme`) |
 | ESLint + typescript-eslint | Kod kalitesi kontrolü |
 | [Vitest](https://vitest.dev) | Birim testleri |
-| Google Fonts | Fraunces (başlıklar) ve DM Sans (gövde metni) |
+| [Fontsource](https://fontsource.org) | Fraunces (başlıklar) ve DM Sans (gövde metni) yazı tipleri, projeyle birlikte sunulur |
 
 Tek sayfalık bir site için ek bir arayüz kütüphanesi, router ya da durum yönetim aracı kullanılmadı.
 
