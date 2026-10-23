@@ -7,6 +7,8 @@
   --color-olive: #6b7a3a;
   --color-olive-dark: #55622e;
   --color-copper: #b5703a;
+  /* Kaydırılınca menü çubuğunun rengi: koyu kahveye çok az zeytin yeşili. */
+  --color-navbar: color-mix(in srgb, var(--color-espresso) 85%, var(--color-olive));
 
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "DM Sans", system-ui, sans-serif;

@@ -23,7 +23,7 @@ export function Navbar() {
       className={classNames(
         'fixed inset-x-0 top-0 z-50 transition-colors duration-300',
         isScrolled
-          ? 'bg-espresso/95 shadow-lg backdrop-blur'
+          ? 'bg-navbar/88 shadow-lg backdrop-blur'
           : 'bg-transparent',
       )}
     >
