@@ -28,7 +28,8 @@ const STATUS_FEEDBACK: Partial<Record<SubmitStatus, StatusFeedback>> = {
 }
 
 export function ContactForm() {
-  const { values, errors, status, setField, handleSubmit } = useContactForm()
+  const { values, errors, status, setField, handleBlur, handleSubmit } =
+    useContactForm()
   const isSubmitting = status === 'submitting'
   const feedback = STATUS_FEEDBACK[status]
 
@@ -41,6 +42,7 @@ export function ContactForm() {
         error={errors.name}
         autoComplete="name"
         onChange={(value) => setField('name', value)}
+        onBlur={() => handleBlur('name')}
       />
       <TextField
         id="email"
@@ -50,6 +52,7 @@ export function ContactForm() {
         error={errors.email}
         autoComplete="email"
         onChange={(value) => setField('email', value)}
+        onBlur={() => handleBlur('email')}
       />
       <TextField
         id="message"
@@ -58,6 +61,7 @@ export function ContactForm() {
         value={values.message}
         error={errors.message}
         onChange={(value) => setField('message', value)}
+        onBlur={() => handleBlur('message')}
       />
 
       <Button type="submit" disabled={isSubmitting} className="w-full">

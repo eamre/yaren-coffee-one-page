@@ -5,7 +5,11 @@ import type {
   ContactFormValues,
   SubmitStatus,
 } from '../types'
-import { hasErrors, validateContactForm } from '../utils/validators'
+import {
+  hasErrors,
+  validateContactForm,
+  validateField,
+} from '../utils/validators'
 
 const EMPTY_VALUES: ContactFormValues = { name: '', email: '', message: '' }
 
@@ -18,6 +22,15 @@ export function useContactForm(submit: ContactSubmitter = submitContactForm) {
     setValues((current) => ({ ...current, [field]: value }))
     setErrors((current) => ({ ...current, [field]: undefined }))
     setStatus('idle')
+  }
+
+  // Alandan çıkılınca hatayı hemen göster. Boş alan burada yoksayılır: kullanıcı
+  // sadece Tab ile geçiyor olabilir, boşluk gönderirken zaten kontrol edilir.
+  function handleBlur(field: keyof ContactFormValues) {
+    const value = values[field]
+    if (!value.trim()) return
+
+    setErrors((current) => ({ ...current, [field]: validateField(field, value) }))
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -37,5 +50,5 @@ export function useContactForm(submit: ContactSubmitter = submitContactForm) {
     }
   }
 
-  return { values, errors, status, setField, handleSubmit }
+  return { values, errors, status, setField, handleBlur, handleSubmit }
 }

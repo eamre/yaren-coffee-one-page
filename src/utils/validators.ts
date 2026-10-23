@@ -34,6 +34,13 @@ const FIELD_VALIDATORS: Record<keyof ContactFormValues, FieldValidator> = {
   message: validateMessage,
 }
 
+export function validateField(
+  field: keyof ContactFormValues,
+  value: string,
+): string | undefined {
+  return FIELD_VALIDATORS[field](value)
+}
+
 export function validateContactForm(
   values: ContactFormValues,
 ): ContactFormErrors {
@@ -42,7 +49,7 @@ export function validateContactForm(
   for (const field of Object.keys(FIELD_VALIDATORS) as Array<
     keyof ContactFormValues
   >) {
-    const error = FIELD_VALIDATORS[field](values[field])
+    const error = validateField(field, values[field])
     if (error) errors[field] = error
   }
 

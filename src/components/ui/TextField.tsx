@@ -6,6 +6,7 @@ interface TextFieldProps {
   label: string
   value: string
   onChange: (value: string) => void
+  onBlur?: () => void
   error?: string
   type?: 'text' | 'email'
   multiline?: boolean
@@ -20,6 +21,7 @@ export function TextField({
   label,
   value,
   onChange,
+  onBlur,
   error,
   type = 'text',
   multiline = false,
@@ -40,6 +42,7 @@ export function TextField({
     onChange: (
       event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => onChange(event.target.value),
+    onBlur,
   }
 
   return (

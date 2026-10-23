@@ -117,7 +117,8 @@ Form `noValidate` ile işaretlidir; kontrol tarayıcının varsayılan balonlar�
 | E-posta | Boş olamaz, geçerli e-posta biçiminde olmalı |
 | Mesaj | Boş olamaz, en az 10 karakter |
 
-- Gönder'e basıldığında üç alan da kontrol edilir, hatalar ilgili alanın altında gösterilir.
+- Bir alana yazılıp başka alana geçildiğinde o alan hemen kontrol edilir ve hata alanın altında gösterilir. Boş bırakılan alan bu aşamada uyarılmaz, o gönderimde kontrol edilir.
+- Gönder'e basıldığında üç alan da kontrol edilir.
 - Kullanıcı bir alanı düzeltmeye başlayınca o alanın hatası kaybolur.
 - Geçerli gönderimde buton "Gönderiliyor..." durumuna geçer, kısa bir gecikmeden sonra başarı mesajı çıkar ve form temizlenir.
 - Sunucu olmadığı için gönderim `contactService.ts` içinde taklit edilir (800 ms gecikme).
