@@ -1,6 +1,6 @@
 import storyImage from '../../assets/images/story.webp'
 import { SECTION_IDS } from '../../data/sections'
-import { STORY_INTRO, STORY_VALUES } from '../../data/story'
+import { STORY_PARAGRAPHS, STORY_VALUES } from '../../data/story'
 import { Container } from '../ui/Container'
 import { Reveal } from '../ui/Reveal'
 import { Section } from '../ui/Section'
@@ -19,7 +19,7 @@ const STORY_TITLE = (
 // Telefonda ve geniş ekranda ikon solda, metin sağda durur. Aradaki
 // genişliklerde kartlar dar kaldığı için ikon üstte, metin altındadır.
 const VALUE_CARD_CLASSES =
-  'flex gap-4 rounded-2xl border border-cream/10 bg-cream/5 p-4 sm:flex-col sm:items-center sm:text-center md:items-start md:text-left lg:flex-row'
+  'flex gap-3 rounded-2xl border border-cream/10 bg-cream/5 p-3.5 sm:gap-4 sm:p-4 sm:flex-col sm:items-center sm:text-center md:items-start md:text-left lg:flex-row'
 
 export function Story() {
   return (
@@ -37,10 +37,13 @@ export function Story() {
             />
           </Reveal>
 
-          <Reveal delayMs={150}>
-            <p className="text-center leading-relaxed text-cream/80 md:text-left md:text-base lg:text-lg">
-              {STORY_INTRO}
-            </p>
+          <Reveal
+            delayMs={150}
+            className="space-y-4 text-center leading-relaxed text-cream/80 md:text-left md:text-base lg:text-lg"
+          >
+            {STORY_PARAGRAPHS.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
           </Reveal>
         </div>
 
@@ -48,10 +51,15 @@ export function Story() {
           <ul className="grid gap-3 sm:grid-cols-3 md:gap-6">
             {STORY_VALUES.map(({ icon, title, description }) => (
               <li key={title} className={VALUE_CARD_CLASSES}>
-                <ValueIcon name={icon} className="h-9 w-9 shrink-0 text-copper" />
+                <ValueIcon
+                  name={icon}
+                  className="h-8 w-8 shrink-0 text-copper sm:h-9 sm:w-9"
+                />
                 <div>
-                  <h3 className="font-display text-xl font-bold">{title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-cream/75">
+                  <h3 className="font-display text-lg font-bold sm:text-xl">
+                    {title}
+                  </h3>
+                  <p className="mt-1 text-sm leading-snug text-cream/75 sm:mt-2 sm:leading-relaxed">
                     {description}
                   </p>
                 </div>

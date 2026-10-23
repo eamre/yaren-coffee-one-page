@@ -9,8 +9,11 @@ export function ProductCard({ product }: ProductCardProps) {
   const { name, description, price, image, imageAlt } = product
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-sand shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-      <div className="aspect-4/3 overflow-hidden">
+    // Tek sütun hâlinde kartlar çok yükselmesin diye geniş telefondan üç sütuna
+    // kadar fotoğraf solda, yazı sağda durur; dar telefonda ve üç sütunda
+    // fotoğraf üsttedir.
+    <article className="group flex h-full flex-col overflow-hidden rounded-3xl bg-sand shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl min-[30rem]:flex-row md:flex-col">
+      <div className="aspect-4/3 overflow-hidden min-[30rem]:aspect-auto min-[30rem]:w-5/12 min-[30rem]:shrink-0 md:aspect-4/3 md:w-auto">
         <img
           src={image}
           alt={imageAlt}
