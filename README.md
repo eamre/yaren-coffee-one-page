@@ -6,7 +6,7 @@
 
 ## Özet
 
-Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, ürünler (Türk Kahvesi, Espresso, Filtre Kahve), marka hikayesi ve doğrulamalı bir iletişim formu bulunuyor. Kodu SOLID ve temiz kod prensiplerine göre küçük, tek sorumluluklu bileşenlere ve saf fonksiyonlara böldüm. Fotoğraflar Unsplash'ten alınmıştır.
+Proje React 19, TypeScript, Vite ve Tailwind CSS üzerine kuruludur. Kodun sürdürülebilir ve okunabilir olması için arayüz, custom hooks ve yardımcı fonksiyonlar birbirinden bağımsız küçük parçalara bölünmüştür.
 
 ## İçindekiler
 
@@ -28,7 +28,7 @@ Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, �
 - **Ürünler:** Türk Kahvesi, Espresso ve Filtre Kahve için görsel, kısa açıklama ve örnek fiyat. Kartlar kaydırınca sırayla belirir, üzerine gelince hafifçe yükselir.
 - **Hikaye:** "Yâren" kelimesinin anlamı (dost, can yoldaşı) ve markanın üç değeri: Gelenek, Zanaat, Sohbet.
 - **İletişim formu:** Ad, e-posta ve mesaj alanları. Boş alanlar ve e-posta biçimi kontrol edilir, geçerli gönderimde başarı mesajı gösterilir. Sunucu bağlantısı gerekmez.
-- **Mobil uyum:** Telefonda buzlu cam görünümlü açılır menü, yeniden düzenlenen bölüm boşlukları ve başlıklar. Masaüstünde bölümler ekranı doldurur.
+- **Mobil uyum:** Telefonda açılır menü, yeniden düzenlenen bölüm boşlukları ve başlıklar. Masaüstünde bölümler ekranı doldurur.
 - **Hareket hassasiyeti:** İşletim sisteminde "hareketi azalt" ayarı açık olan kullanıcılarda animasyonlar kapanır.
 
 ## Teknolojiler
@@ -43,7 +43,7 @@ Siteyi React, TypeScript, Vite ve Tailwind CSS ile geliştirdim. Sayfada hero, �
 | [Vitest](https://vitest.dev) | Birim testleri |
 | Google Fonts | Fraunces (başlıklar) ve DM Sans (gövde metni) |
 
-Ek bir arayüz kütüphanesi, router ya da durum yönetim aracı kullanılmadı. Tek sayfalık bir site için gereksiz olurdu.
+Tek sayfalık bir site için ek bir arayüz kütüphanesi, router ya da durum yönetim aracı kullanılmadı.
 
 ## Kurulum ve Çalıştırma
 
@@ -79,10 +79,10 @@ src/
 │   ├── layout/        Navbar, MobileMenu, MenuIcon, Footer
 │   ├── sections/      Hero, Products, Story, Contact, ContactForm
 │   └── ui/            Button, Container, Section, SectionHeading,
-│                      ProductCard, Reveal, Steam, TextField
+│                      ProductCard, Reveal, Steam, TextField, ValueIcon
 ├── data/              Marka, ürün, navigasyon ve hikâye içerikleri
 ├── hooks/             useContactForm, useReveal, useScrolled,
-│                      useActiveSection
+│                      useActiveSection, useSectionHash
 ├── services/          contactService (sahte gönderim)
 ├── types/             Paylaşılan TypeScript tipleri
 ├── utils/             classNames, formatPrice, validators (+ *.test.ts)
@@ -139,18 +139,11 @@ Form `noValidate` ile işaretlidir; kontrol tarayıcının varsayılan balonlar�
 
 ## Performans
 
-- **Hafif görseller:** Fotoğraflar WebP biçiminde ve ekranda gösterildikleri boyuta göre küçültüldü. En büyüğü olan hero görseli yaklaşık 260 KB.
+- **Hafif görseller:** Fotoğraflar WebP biçiminde ve ekranda gösterildikleri boyuta göre küçültüldü. En büyüğü olan telefon hero görseli yaklaşık 95 KB.
 - **Gerektiğinde yüklenen görseller:** Sayfanın en üstündeki hero görseli hemen yüklenir. Diğerleri ekrana yaklaşınca yüklenir (`loading="lazy"`).
-- **Hızlı açılan yazılar:** Yazı tipleri yüklenirken metin önce sistem fontuyla görünür, yazı tipi gelince değişir (`display=swap`). Sayfa boş beklemez.
+- **Hızlı açılan yazılar:** Yazı tipleri projeyle birlikte kendi sunucumuzdan gelir (Google'a istek gitmez). Sayfanın üstünde görünen yazıların yazı tipleri önceden yüklenir. Yazı tipi gelene kadar metin sistem fontuyla görünür (`display=swap`), yani sayfa boş beklemez.
 - **Akıcı animasyonlar:** Animasyonlar yalnızca saydamlık ve konum değişikliği kullanır. Kaydırınca beliren öğeler ve menüdeki aktif bölüm `IntersectionObserver` ile takip edilir, yani sayfayı her kaydırışta ağır bir kod çalışmaz.
-
-## Kullanılan Araçlar
-
-- **Visual Studio Code:** Kod takibi ve düzenleme.
-- **Git:** Sürüm kontrolü.
-- **Unsplash:** Ücretsiz fotoğraflar.
-- **Claude Code:** Yapay zekâ destekli geliştirme asistanı.
 
 ## Görseller
 
-Fotoğraflar [Unsplash](https://unsplash.com) üzerinden, Türk Kahvesi görseli yapay zekâ ile hazırlanmıştır.
+Fotoğraflar [Unsplash](https://unsplash.com) üzerinden alınmıştır.
